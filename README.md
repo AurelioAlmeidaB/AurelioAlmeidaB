@@ -48,7 +48,7 @@
 <br>
 
 <div align="center">
-  <a href="https://www.linkedin.com/in/aurelio-almeida-barbosa/">
+  <a href="https://www.linkedin.com/in/aurelio-almeida-barbosa-2574112ba/">
     <img src="https://img.shields.io/badge/LINKEDIN-0D1B2A?style=for-the-badge&logo=linkedin&logoColor=4FA3E0" alt="LinkedIn">
   </a>
 </div>
