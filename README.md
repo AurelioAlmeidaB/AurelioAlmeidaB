@@ -1,4 +1,4 @@
-<h1 align="center">Hey, I'm Aurelio Almeida! 🐊</h1>
+<h1 align="center">Hey, I'm Aurelio Almeida! </h1>
 
 <p align="center">
   <a href="https://git.io/typing-svg">
