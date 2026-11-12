@@ -1,4 +1,4 @@
-name: Generate Totodile contribution grid
+name: Generate Totodile profile images
 
 on:
   schedule:
@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
     paths:
-      - scripts/totodile.mjs
+      - scripts/**
       - .github/workflows/totodile.yml
 
 permissions:
@@ -27,6 +27,11 @@ jobs:
 
       - name: Generate Totodile SVGs
         run: node scripts/totodile.mjs --user "${{ github.repository_owner }}" --out dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate stats cards
+        run: node scripts/cards.mjs --user "${{ github.repository_owner }}" --name "Aurelio Almeida" --out dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

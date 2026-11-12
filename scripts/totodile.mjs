@@ -7,61 +7,7 @@
 
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-
-// ---------- Sprite (pixel art, olhando para a direita) ----------
-
-const SPRITE_COLORS = {
-  'o': '#0a2342',
-  'b': '#3e8ede',
-  'h': '#8fd0ff',
-  'd': '#2a64ad',
-  'c': '#f6e3a1',
-  'r': '#e2453c',
-  'w': '#ffffff',
-  'k': '#7a1222',
-  't': '#ffffff',
-  'm': '#9c2b3a'
-};
-
-// Frame 0: boca fechada / passo A. Frame 1: boca aberta / passo B.
-const FRAMES = [
-  [
-    '...........oooooooo.....',
-    '..........obbbbbbbbo....',
-    '.........obhhbbbbbbbo...',
-    '.........obhbbbwwbbbbo..',
-    '.........obbbbbwkkbbbbo.',
-    '...r.r.r.obbbbbwkkbbbbbo',
-    '..orororoobbbbbbbbbbbbbo',
-    '.obbbbbbbbbbbbbbbbbbbbbo',
-    'obbbbbbbbbbbbotototototo',
-    '.obbbbbbbbbbbcccccccccco',
-    '..odbbbbbbbbccoooooooooo',
-    '...odbbccbbbcco.........',
-    '....odbbccccccbo........',
-    '.....obbddddbbo.........',
-    '.....obbo..obbo.........',
-    '.....ooo...ooo..........'
-  ],
-  [
-    '...........oooooooo.....',
-    '..........obbbbbbbbo....',
-    '.........obhhbbbbbbbo...',
-    '.........obhbbbwwbbbbo..',
-    '.........obbbbbwkkbbbbo.',
-    '...r.r.r.obbbbbwkkbbbbbo',
-    '..orororoobbbbbbbbbbbbbo',
-    '.obbbbbbbbbbbbbbbbbbbbbo',
-    'obbbbbbbbbbbbotototototo',
-    '.obbbbbbbbbbbommmmmmmmmo',
-    '..odbbbbbbbbbomtmtmtmtmo',
-    '...odbbccbbbbcccccccccco',
-    '....odbbccccccoooooooooo',
-    '.....obbddddbbo.........',
-    '....obbo....obbo........',
-    '....ooo.....ooo.........'
-  ]
-];
+import { FRAMES, spriteRects } from './sprite.mjs';
 
 // ---------- Temas do gráfico ----------
 
@@ -189,23 +135,6 @@ function eatTime(walk, cellCenterX) {
 
 const pct = (t, total) => `${((t / total) * 100).toFixed(3)}%`;
 
-function spriteRects(frame) {
-  let out = '';
-  frame.forEach((row, y) => {
-    let x = 0;
-    while (x < row.length) {
-      const ch = row[x];
-      let end = x + 1;
-      while (end < row.length && row[end] === ch) end++;
-      if (ch !== '.') {
-        out += `<rect x="${x * PIXEL}" y="${y * PIXEL}" width="${(end - x) * PIXEL}" height="${PIXEL}" fill="${SPRITE_COLORS[ch]}"/>`;
-      }
-      x = end;
-    }
-  });
-  return out;
-}
-
 function render(grid, theme) {
   const cols = grid.length;
   const { keys, walks, walkEnd, total, gridW } = buildPath(cols);
@@ -248,7 +177,7 @@ function render(grid, theme) {
     }
   }
 
-  const sprite = FRAMES.map((f, i) => `<g class="f${i}">${spriteRects(f)}</g>`).join('');
+  const sprite = FRAMES.map((f, i) => `<g class="f${i}">${spriteRects(f, PIXEL)}</g>`).join('');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vbX} ${vbY} ${vbW} ${vbH}" width="${vbW}" height="${vbH}">
 <desc>Jacarezinho azul comendo o gráfico de contribuições do GitHub</desc>

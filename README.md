@@ -7,8 +7,8 @@
 </p>
 
 <div align="center">
-  <img height="175" src="https://github-readme-stats.vercel.app/api?username=AurelioAlmeidaB&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=0D1B2A&title_color=4FA3E0&icon_color=4FA3E0&text_color=C9D1D9" alt="Aurelio Almeida's GitHub stats">
-  <img height="175" src="https://github-readme-stats.vercel.app/api/top-langs/?username=AurelioAlmeidaB&layout=compact&langs_count=7&hide_border=true&bg_color=0D1B2A&title_color=4FA3E0&text_color=C9D1D9" alt="Aurelio Almeida's most used languages">
+  <img height="175" src="https://raw.githubusercontent.com/AurelioAlmeidaB/AurelioAlmeidaB/output/stats.svg" alt="Aurelio Almeida's GitHub stats">
+  <img height="175" src="https://raw.githubusercontent.com/AurelioAlmeidaB/AurelioAlmeidaB/output/top-langs.svg" alt="Aurelio Almeida's most used languages">
 </div>
 
 <div align="center">
